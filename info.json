@@ -1,11 +1,12 @@
 {
-    "name": "vonNeumann",
-    "version": "0.0.10",
-    "title": "Von Neumann",
+    "name": "companionship",
+    "version": "0.0.4",
+    "title": "Companionship",
     "author": "Kizrak",
     "contact": "",
     "homepage": "https://github.com/abaines/Von-Neumann",
     "factorio_version": "0.17",
-    "dependencies": ["base >= 0.17.66"],
-    "description": "Von Neumann Mod! Who wants to be a sack of blood and bones when you can be an hyper-intelligent self-replicating robot!\n\nThis is a scenario!\n#god-controller #robots #scenario #logistics"
+    "dependencies": ["base >= 0.17"],
+    "description": "Have friends and family? Tired of them playing without you? Get Companionship! This mod makes playing on your map/server pain if you do it alone! When just a single player is on the map/server, the game slows down to painfully slow speed until more people join. Once a second player joins the map/server, the game returns to normal speed!\n\nPlayers also have the ability to set a desired game speed in the mod settings. The server will select the slowest speed among currently online players."
 }
+
