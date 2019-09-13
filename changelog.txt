@@ -1,42 +1,21 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.0.10
-Date: 2019.09.12
-  Changes:
-    - Prevent picking up items by returning them to any open entity (not just chests)
----------------------------------------------------------------------------------------------------
-Version: 0.0.9
-Date: 2019.09.12
-  Changes:
-    - Prevent picking up items by returning them to open container entity
----------------------------------------------------------------------------------------------------
-Version: 0.0.8
+Version: 0.0.4
 Date: 2019.09.05
   Changes:
-    - Starting story text. Thanks Thuro!
----------------------------------------------------------------------------------------------------
-Version: 0.0.7
-Date: 2019.08.28
-  Changes:
-    - Fix bug related to moving cursor while mining.
----------------------------------------------------------------------------------------------------
-Version: 0.0.6
-Date: 2019.08.25
-  Changes:
-    - Experimenting with a campaign.
-    - Attempt at a working changelog.txt file.
----------------------------------------------------------------------------------------------------
-Version: 0.0.5
-Date: 2019.08.24
-  Changes:
-    - Converted into Scenario!
----------------------------------------------------------------------------------------------------
-Version: 0.0.4
-Date: 2019.08.24
-  Changes:
-    - Remove Companionship into separate hardmod
+    - Minor adjustments to logging/printing.
 ---------------------------------------------------------------------------------------------------
 Version: 0.0.3
+Date: 2019.08.28
+  Changes:
+    - Fix bug related to too much speed when trying to reconnect to server.
+---------------------------------------------------------------------------------------------------
+Version: 0.0.2
 Date: 2019.08.24
   Changes:
-    - Start of changelog.txt
-    - Going back to softmod compatible
+    - Fix logging/print bug.
+---------------------------------------------------------------------------------------------------
+Version: 0.0.1
+Date: 2019.08.24
+  Changes:
+    - Start of mod!
+
