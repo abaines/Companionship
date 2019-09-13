@@ -1,4 +1,4 @@
-Von-Neumann - Factorio Mod
+Companionship - Factorio Mod
 
 Copyright © 2019 Alan Baines
 
