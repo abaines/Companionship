@@ -40,22 +40,19 @@ local function on_runtime_mod_setting_changed(event)
 	local min_companions = settings.startup['minimum_number_of_companions'].value
 	local slow_speed_companion = settings.startup['speed_when_below_minimum_number_of_companions'].value
 
-	local eventName = eventNameMapping[event.name]
 	local numberConnectedPlayers = #game.connected_players
 
-	local previousSpeed = 0 + game.speed
-	local newSpeed = 0 + getNewGameSpeed(numberConnectedPlayers,min_companions,slow_speed_companion)
+	local previousSpeed = game.speed
+	local newSpeed = getNewGameSpeed(numberConnectedPlayers,min_companions,slow_speed_companion)
 
-	local msg = "Companionship: "..numberConnectedPlayers .. " / " .. min_companions .. "    Speed: " .. newSpeed
+	local msg = "Companionship: " .. numberConnectedPlayers .. " / " .. min_companions .. "    Speed: " .. newSpeed
+	log(msg)
 
 	if previousSpeed == newSpeed then
-		-- game.print("Companionship: " .. newSpeed,{r=255,g=255})
+		-- nothing changed
 	else
 		game.print(msg,{r=255,g=255})
 	end
-
-	msg = msg .. "    [" .. eventName .."]"
-	log(msg)
 
 	game.speed = newSpeed
 end
@@ -68,20 +65,17 @@ script.on_event({
 
 local function resetPlayerDesiredSpeed(event)
 	local player = game.players[event.player_index]
-
-	local previousSpeed = 0 + player.mod_settings["player_desired_speed"].value
-	local newSpeed = 0 + math.min(1,previousSpeed)
-
 	local eventName = eventNameMapping[event.name]
 
-	if newSpeed == previousSpeed then
-		-- game.print("Companionship: No change needed: " .. previousSpeed .. " -> " .. newSpeed .. "   [" .. eventName .. "]",{r=128,g=128,b=128})
-	else
-		game.print("Companionship: Reset Game Speed for: "..player.name .. "   [" .. eventName .. "]",{r=255,g=255})
-	end
+	local previousSpeed = player.mod_settings["player_desired_speed"].value
+	local newSpeed = math.min(1,previousSpeed)
 
-	player.mod_settings["player_desired_speed"] = {value = newSpeed}
-	--script.raise_event(defines.events.on_runtime_mod_setting_changed,{setting = "player_desired_speed"})
+	if newSpeed == previousSpeed then
+		-- nothing changed
+	else
+		game.print("Companionship: Reset Game Speed for: "..player.name .. "    [" .. eventName .. "]",{r=255,g=255})
+		player.mod_settings["player_desired_speed"] = {value = newSpeed}
+	end
 end
 
 script.on_event({
