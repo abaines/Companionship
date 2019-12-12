@@ -67,6 +67,8 @@ local function resetPlayerDesiredSpeed(event)
 	local player = game.players[event.player_index]
 	local eventName = eventNameMapping[event.name]
 
+	if player==nil then return end
+
 	local previousSpeed = player.mod_settings["player_desired_speed"].value
 	local newSpeed = math.min(1,previousSpeed)
 
