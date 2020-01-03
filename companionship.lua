@@ -69,14 +69,19 @@ local function resetPlayerDesiredSpeed(event)
 
 	if player==nil then return end
 
-	local previousSpeed = player.mod_settings["player_desired_speed"].value
-	local newSpeed = math.min(1,previousSpeed)
+	local player_desired_speed = player.mod_settings["player_desired_speed"].value
+	local newSpeed = math.min(1,player_desired_speed)
 
-	if newSpeed == previousSpeed then
+	if game.tick<=0 then
+		game.speed = player_desired_speed
+
+	elseif newSpeed == player_desired_speed then
 		-- nothing changed
+
 	else
 		game.print("Companionship: Reset Game Speed for: "..player.name .. "    [" .. eventName .. "]",{r=255,g=255})
 		player.mod_settings["player_desired_speed"] = {value = newSpeed}
+
 	end
 end
 
