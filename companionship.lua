@@ -31,7 +31,7 @@ end
 
 local function on_runtime_mod_setting_changed(event)
 	local setting = event.setting -- string: The setting name that changed.
-	local setting_type = event.setting_type -- string: The setting type: "runtime-per-user", or "runtime-global".
+	--local setting_type = event.setting_type -- string: The setting type: "runtime-per-user", or "runtime-global".
 
 	if setting ~= "player_desired_speed" then
 		return -- not our setting
@@ -48,7 +48,7 @@ local function on_runtime_mod_setting_changed(event)
 	local msg = "Companionship: " .. numberConnectedPlayers .. " / " .. min_companions .. "    Speed: " .. newSpeed
 	log(msg)
 
-	if previousSpeed == newSpeed then
+	if previousSpeed == newSpeed then -- luacheck: ignore 542
 		-- nothing changed
 	else
 		game.print(msg,{r=255,g=255})
@@ -75,7 +75,7 @@ local function resetPlayerDesiredSpeed(event)
 	if game.tick<=0 then
 		game.speed = player_desired_speed
 
-	elseif newSpeed == player_desired_speed then
+	elseif newSpeed == player_desired_speed then -- luacheck: ignore 542
 		-- nothing changed
 
 	else
