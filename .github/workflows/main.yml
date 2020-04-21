@@ -18,3 +18,4 @@ jobs:
 
     - name: Factorio Mod luacheck
       uses: Roang-zero1/factorio-mod-luacheck@v1.1.0
+
