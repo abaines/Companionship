@@ -14,6 +14,8 @@ import tempfile
 import sys
 import traceback
 
+import __main__ as main
+
 rootx = os.path.dirname(os.path.abspath(__file__))
 print( rootx )
 
@@ -125,5 +127,7 @@ with zipfile.ZipFile(zipPath, 'w') as zout:
       print(filename)
       zout.write(filename,arcname=arcname)
 
-input("Press Enter to continue...")
+# check interactive mode
+if hasattr(main, '__file__'):
+   input("Press Enter to continue...")
 
