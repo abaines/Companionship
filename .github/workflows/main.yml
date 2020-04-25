@@ -32,6 +32,6 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:
-        name: ${{github.repository}}.zip
-        path: ../${{github.repository}}.zip
+        name: Companionship.zip
+        path: ../Companionship.zip
 
