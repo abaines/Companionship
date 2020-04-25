@@ -17,10 +17,10 @@ import traceback
 rootx = os.path.dirname(os.path.abspath(__file__))
 print( rootx )
 
-baseFolder = rootx[:rootx.rindex('\\')+1]
+baseFolder = rootx[:rootx.rindex(os.sep)+1]
 print( baseFolder )
 
-rootName = rootx[rootx.rindex('\\')+1:]
+rootName = rootx[rootx.rindex(os.sep)+1:]
 print( rootName )
 
 zipPath = os.path.join(baseFolder,rootName+".zip")
@@ -37,12 +37,12 @@ whitelistextensions=[
 ]
 
 whitelist=[
-"\\README.md",
-"\\changelog.txt",
-"\\info.json",
-"\\license.md",
-"\\thumbnail.png",
-"\\description.json",
+os.sep+"README.md",
+os.sep+"changelog.txt",
+os.sep+"info.json",
+os.sep+"license.md",
+os.sep+"thumbnail.png",
+os.sep+"description.json",
 ]
 
 whitelistextensionsinsidefolders=[
@@ -65,6 +65,8 @@ def endsWithAny(text,collection):
          return c
    return False
 
+git_directory_flag = os.sep+'.git'+os.sep
+
 def collectWhiteListFiles(root,whitelist,whitelistextensions,whitelistextensionsinsidefolders):
    returns = []
    ignored = []
@@ -78,7 +80,7 @@ def collectWhiteListFiles(root,whitelist,whitelistextensions,whitelistextensions
          returns.append(shortname)
       elif c >= 2 and endsWithAny(file,whitelistextensionsinsidefolders):
          returns.append(shortname)
-      elif '\\.git\\' in file:
+      elif git_directory_flag in file:
          pass
       else:
          ignored.append(shortname)
@@ -124,3 +126,4 @@ with zipfile.ZipFile(zipPath, 'w') as zout:
       zout.write(filename,arcname=arcname)
 
 input("Press Enter to continue...")
+
