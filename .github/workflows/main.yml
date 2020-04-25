@@ -24,4 +24,5 @@ jobs:
     - run: |
         python -c "import sys; print(sys.version);"
         python -c "import os; print(os.getcwd()); print(os.listdir(os.curdir));"
+        python zipper.py
 
