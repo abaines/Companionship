@@ -29,9 +29,9 @@ jobs:
     - run: |
         python zipper.py
 
-    - id: getfilename
+    - name: Calculate Artifact File Name
+      id: getfilename
       run: echo "::set-output name=file::$(ls ../*.zip)"
-
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
