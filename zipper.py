@@ -14,8 +14,6 @@ import tempfile
 import sys
 import traceback
 
-import __main__ as main
-
 rootx = os.path.dirname(os.path.abspath(__file__))
 print( rootx )
 
@@ -128,11 +126,11 @@ with zipfile.ZipFile(zipPath, 'w') as zout:
       zout.write(filename,arcname=arcname)
 
 
-# check interactive mode
-print( hasattr(main, '__file__') )
-print( bool(getattr(sys, 'ps1', sys.flags.interactive)) )
-print( sys.argv )
-print( sys.flags.interactive )
-
-input("Press Enter to continue...")
+# check os.name to determine interactive mode
+if os.name == 'nt':
+   input("Press Enter to continue...")
+elif os.name == 'posix':
+   pass
+else:
+   raise Exception("unknown os.name",os.name)
 
