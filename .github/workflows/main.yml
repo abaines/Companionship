@@ -29,9 +29,13 @@ jobs:
     - run: |
         python zipper.py
 
+    - id: getfilename
+      run: echo "::set-output name=file::$(ls ../*.zip)"
+
+
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:
         name: artifact
-        path: ../*.zip
+        path: ${{ steps.getfilename.outputs.file }}
 
