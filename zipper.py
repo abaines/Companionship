@@ -130,7 +130,7 @@ with zipfile.ZipFile(zipPath, 'w') as zout:
 if os.name == 'nt':
    input("Press Enter to continue...")
 elif os.name == 'posix':
-   pass
+   print( os.listdir(os.curdir) )
 else:
    raise Exception("unknown os.name",os.name)
 
