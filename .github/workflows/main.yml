@@ -29,3 +29,9 @@ jobs:
     - run: |
         python zipper.py
 
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: ${{github.repository}}.zip
+        path: ../${{github.repository}}.zip
+
