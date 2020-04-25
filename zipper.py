@@ -127,7 +127,12 @@ with zipfile.ZipFile(zipPath, 'w') as zout:
       print(filename)
       zout.write(filename,arcname=arcname)
 
+
 # check interactive mode
-if hasattr(main, '__file__'):
-   input("Press Enter to continue...")
+print( hasattr(main, '__file__') )
+print( bool(getattr(sys, 'ps1', sys.flags.interactive)) )
+print( sys.argv )
+print( sys.flags.interactive )
+
+input("Press Enter to continue...")
 
