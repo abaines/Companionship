@@ -21,8 +21,11 @@ jobs:
 
     - uses: actions/setup-python@v1
 
-    - run: |
+    - name: Check Python and OS Setup
+      run: |
         python -c "import sys; print(sys.version);"
         python -c "import os; print(os.getcwd()); print(os.listdir(os.curdir));"
+
+    - run: |
         python zipper.py
 
