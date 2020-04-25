@@ -19,3 +19,7 @@ jobs:
     - name: Factorio Mod luacheck
       uses: Roang-zero1/factorio-mod-luacheck@v1.1.0
 
+    - uses: actions/setup-python@v1
+
+    - run: python -c "import sys; print(sys.version)"
+
