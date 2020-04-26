@@ -15,16 +15,16 @@ import sys
 import traceback
 
 rootx = os.path.dirname(os.path.abspath(__file__))
-print( rootx )
+print( 'rootx', rootx )
 
 baseFolder = rootx[:rootx.rindex(os.sep)+1]
-print( baseFolder )
+print( 'baseFolder', baseFolder )
 
 rootName = rootx[rootx.rindex(os.sep)+1:]
-print( rootName )
+print( 'rootName', rootName )
 
 zipPath = os.path.join(baseFolder,rootName+".zip")
-print( zipPath )
+print( 'zipPath', zipPath )
 
 if os.path.exists(zipPath):
    os.remove(zipPath)
@@ -97,7 +97,7 @@ def setExtensions(listFiles):
 
 def printWhiteListFiles(root):
    print("")
-   print(root)
+   print('printWhiteListFiles','root',root)
    r,i = collectWhiteListFiles(root,whitelist,whitelistextensions,whitelistextensionsinsidefolders)
 
    if len(i)>0:
@@ -122,8 +122,8 @@ with zipfile.ZipFile(zipPath, 'w') as zout:
    for f in r:
       arcname=rootName+f
       filename="."+f
-      print(filename)
-      zout.write(filename,arcname=arcname)
+      print(filename,arcname)
+      zout.write(filename,arcname)
 
 
 # check os.name to determine interactive mode
