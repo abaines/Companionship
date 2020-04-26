@@ -13,6 +13,15 @@ import datetime
 import tempfile
 import sys
 import traceback
+import json
+
+def get_mod_name():
+   with open('info.json') as info_json:
+      data = json.load(info_json)  
+      name = data['name']
+      version = data['version']
+      n_v = name+'_'+version
+      return n_v
 
 rootx = os.path.dirname(os.path.abspath(__file__))
 print( 'rootx', rootx )
@@ -20,7 +29,7 @@ print( 'rootx', rootx )
 baseFolder = rootx[:rootx.rindex(os.sep)+1]
 print( 'baseFolder', baseFolder )
 
-rootName = rootx[rootx.rindex(os.sep)+1:]
+rootName = get_mod_name()
 print( 'rootName', rootName )
 
 zipPath = os.path.join(baseFolder,rootName+".zip")
