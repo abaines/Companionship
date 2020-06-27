@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.15
+Date: 2020.6.27
+  Changes:
+    - Improve setting names and descriptions (tooltips)
+    - Deal with rounding comparison issue in settings
+    - Factorio 0.18.34
+    - Build process upgrades
+---------------------------------------------------------------------------------------------------
 Version: 0.3.13
 Date: 2020.4.25
   Changes:
