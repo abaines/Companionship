@@ -1,5 +1,9 @@
 -- Kizrak
 
+
+local sb = serpent.block -- luacheck: ignore 211
+
+
 local eventNameMapping = {}
 for eventName,eventId in pairs(defines.events) do
 	eventNameMapping[eventId] = eventName
@@ -51,6 +55,8 @@ local function on_runtime_mod_setting_changed(event)
 	if previousSpeed == newSpeed then -- luacheck: ignore 542
 		-- nothing changed
 	else
+		local player = game.players[event.player_index]
+		log("Game speed change triggered by " .. player.name)
 		game.print(msg,{r=255,g=255})
 	end
 
@@ -72,14 +78,17 @@ local function resetPlayerDesiredSpeed(event)
 	local player_desired_speed = player.mod_settings["player_desired_speed"].value
 	local newSpeed = math.min(1,player_desired_speed)
 
+	local msg = "Companionship: Reset Game Speed for: "..player.name .. "    [" .. eventName .. "]"
+
 	if game.tick<=0 then
 		game.speed = player_desired_speed
+		log(msg)
 
 	elseif newSpeed == player_desired_speed then -- luacheck: ignore 542
 		-- nothing changed
 
 	else
-		game.print("Companionship: Reset Game Speed for: "..player.name .. "    [" .. eventName .. "]",{r=255,g=255})
+		game.print(msg,{r=255,g=255})
 		player.mod_settings["player_desired_speed"] = {value = newSpeed}
 
 	end
@@ -94,4 +103,21 @@ script.on_event({
 	defines.events.on_player_removed,
 	defines.events.on_player_respawned,
 },resetPlayerDesiredSpeed)
+
+
+local function speedCommand(event)
+	local player = game.players[event.player_index]
+	local speed = tonumber(event.parameter)
+
+	if speed then
+		log("New command line speed set by "..player.name .. " to a value of " .. speed)
+		player.mod_settings["player_desired_speed"] = {value = speed}
+	end
+end
+
+commands.add_command(
+	"speed",
+	"Sets player's desired Companionship game speed. A value of 1.0 is normal|default speed of 60 UPS.",
+	speedCommand
+)
 
